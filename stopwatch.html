@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body { background-color: #00ff00; }
+        
+        .stopwatch {
+            position: fixed;
+            font-size: 48px;
+            font-family: 'Kdam Thmor Pro';
+            color: white;
+            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5),
+                         0px -2px 5px rgba(0, 0, 0, 0.5),
+                         -2px 0px 5px rgba(0, 0, 0, 0.5),
+                         2px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="stopwatch"></div>
+
+    <script>
+        const start = Date.now();
+
+        setInterval(() => {
+            const elapsed = Date.now() - start;
+
+            const m = Math.floor(elapsed / 60000);
+            const s = Math.floor((elapsed % 60000) / 1000);
+            const ms = Math.floor((elapsed % 1000));
+
+            const mm = m.toString().padStart(2, "0");
+            const ss = s.toString().padStart(2, "0");
+            const mss = ms.toString().padStart(3, "0");
+
+            document.querySelector('.stopwatch').innerHTML = `${mm}:${ss}.${mss}`;
+        }, 1);
+    </script>
+</body>
+</html>
